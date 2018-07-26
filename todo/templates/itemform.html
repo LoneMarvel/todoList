@@ -1,0 +1,22 @@
+{% extends 'main_layout.html' %}
+{% block title %}{{ title }}{% endblock %}
+{% block pageTitle %}This Is My Web Version Of todo List{% endblock %}
+{% block content %}
+{% if action == 'add' %}
+  <center><span class="grey-text"><h4>Create New Todo Item Form</h4></span></center>
+{% else %}
+  <center><span class="grey-text"><h4>Update/Edit Todo Item Form</h4></span></center>
+{% endif %}
+<div>
+  <form action="" method="POST">
+    {{ form.hidden_tag() }}
+    {{ form.title.label() }}
+    {{ form.title() }}
+    {{ form.todoText.label() }}
+    {{ form.todoText() }}
+    {{ form.submit(class="btn waves-effect waves-light grey darken-3") }}
+  </form>
+</div>
+</br>
+<a class="btn-floating grey darken-3" href="{{ url_for('index') }}"><i class="material-icons">home</i></a>
+{% endblock %}

@@ -1,0 +1,50 @@
+{% extends 'main_layout.html' %}
+
+{% block title %}My TodoList Page{% endblock %}
+
+{% block pageTitle %}This Is My Web Version Of todo List{% endblock %}
+{% block content %}
+<center><span class="grey-text"><h4>Todo Active Items Main List</h4></span></center>
+<div class='row'>
+  <div class='col s12 blocks'>
+    {% for item in itemsActList %}
+      <div class='col s3'>
+        <div class="card grey darken-2 z-depth-5">
+          <div class="card-content grey-text">
+            <span style="font-size:14px;font-weight:bold;" class="card-title grey-text">
+              <a class="grey-text" href='{{ url_for('edit', id=item.id) }}'>{{ item.todo_title }}
+              &nbsp - &nbsp<span style="font-size:12px;">{{ item.todo_date.strftime('%d/%m/%Y-%H:%M') }}</span></a>
+            <a class="grey-text" href='{{ url_for('todo_close', id=item.id) }}'><i class="material-icons right">close</i></a>
+            <a class="grey-text" href='{{ url_for('edit', id=item.id) }}'><i class="material-icons right">mode_edit</i></a>
+            </span>
+            <p><span style="font-size:12px;">{{ item.todo_text[:40] }}</p></span>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+<!-- This Is The Start Of Inactive Items From The DB todo -->
+<br /><hr />
+<center><span class="grey-text"><h4>Todo Inactive Items List</h4></span></center>
+<div class='row'>
+  <div class='col s12 blocks'>
+    {% for item in itemsInList %}
+      <div class='col s5'>
+        <div class="card grey darken-2 z-depth-5">
+          <div class="card-content grey-text">
+            <span style="font-size:14px;font-weight:bold;" class="card-title grey-text">
+              <a class="grey-text" href='{{ url_for('edit', id=item.id) }}'>{{ item.todo_title }}
+              &nbsp - &nbsp<span style="font-size:12px;">{{ item.todo_date.strftime('%d/%m/%Y-%H:%M') }}</span></a>
+            <a class="grey-text" href='{{ url_for('todo_close', id=item.id) }}'><i class="material-icons right">close</i></a>
+            <a class="grey-text" href='{{ url_for('edit', id=item.id) }}'><i class="material-icons right">mode_edit</i></a>
+            </span>
+            <p><span style="font-size:12px;">{{ item.todo_text[:40] }}</p></span>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock %}
