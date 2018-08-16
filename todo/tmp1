@@ -1,2 +1,0 @@
-item1 = Items(todo_title='First Todo Item', todo_text='This Is My First Todo Item')
-item2 = Items(todo_title='Second Todo Item', todo_text='This Is My Second Todo Item')
